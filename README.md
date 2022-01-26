@@ -1,7 +1,14 @@
 # Travelling_companion
 
-###Starting Project:
+###Docker Run:
+docker image build -t travelling-companion .
 
+docker-compose run travelling-companion python TravellingCompanion/manage.py migrate
+ 
+docker-compose up
+
+
+###Starting Project:
 
 command for making migration - python manage.py makemigrations
 
@@ -10,6 +17,7 @@ command for data migration - python manage.py migrate
 command for running the app - python manage.py runserver
 
 command for running the tests - python manage.py test
+
 
 ###API Endpoints:
 

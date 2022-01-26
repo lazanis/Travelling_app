@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'Travelling Companion',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': '127.0.0.1',
+        'HOST': 'db-service',
         'PORT': '5432',
     }
 }
