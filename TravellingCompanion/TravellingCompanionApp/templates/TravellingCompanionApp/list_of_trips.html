@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new trip</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+    <center> <h2 style="margin-top: 20px"> List of trips </h2> </center>
+    <form method="POST" action="register_new_trip">
+        <div class="container" style="margin-top: 50px; margin-bottom: 50px">
+        <table class="table table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th>Trip Id</th>
+                    <th>Trip associates</th>
+                    <th>Trip date</th>
+                    <th>Trip cost</th>
+                    <th colspan="2" class="text-center">Action</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for item in trips %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.associates }}</td>
+                        <td>{{ item.trip_date }}</td>
+                        <td>{{ item.total_cost }}</td>
+                        <td><a href=/get_edit_data/{{item.id}}>Edit</a></td>
+                        <td><a href=/delete_data/{{item.id}}>Delete</a></td>
+                     </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+
+    <form method="GET" action="register">
+        <div class="container">
+            {% for msg in messages %}
+                {{ msg}}
+            {% endfor %}
+        </div>
+    </form>
+
+</body>
+</html>

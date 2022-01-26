@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User menu</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <center> <h2 style="margin-top: 20px"> User Menu </h2> </center>
+    <div class="container">
+    <form method="POST" action="add_new_trip">
+        <div class="form-group">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary" name="add_new_trip"style="width: 175px" >Add new Trip</button>
+        </div>
+    </form>
+    <form method="POST" action="add_new_destination">
+        <div class="form-group">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary" name="add_new_destination"style="width: 175px" >Add new Destination</button>
+        </div>
+    </form>
+    <form method="POST" action="manage_trips">
+        <div class="form-group">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary" name="manage_trips"style="width: 175px" >Manage Trips</button>
+        </div>
+    </form>
+</div>
+    <hr>
+    <center> <h2 style="margin-bottom: 20px"> Past trips </h2> </center>
+    <div class="container">
+        <table class="table table-bordered">
+            <thead class="table-primary">
+            <tr>
+                <th>Trip Id</th>
+                <th>Trip associates</th>
+                <th>Trip date</th>
+                <th>Trip cost</th>
+                <th>Trip destinations</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for item in trips %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.associates }}</td>
+                    <td>{{ item.trip_date }}</td>
+                    <td>{{ item.total_cost }}</td>
+                    <td>{{ item.destinations }}</td>
+                 </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

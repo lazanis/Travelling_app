@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <center> <h2 style="margin-top: 20px"> Login Form </h2> </center>
+    <form method="POST" action="login">
+        <div class="container" style="width: 600px; margin-bottom: 50px">
+            <div class="form-group">
+                <label class="form-label">Username: </label>
+                <input type="text" class="form-control" placeholder="Enter Username" name="username" required maxlength="50">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password: </label>
+                <input type="password" class="form-control" placeholder="Enter Password" name="password" required maxlength="50">
+            </div>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary" style="width:100%" name="login">Login</button>
+        </div>
+    </form>
+    <hr>
+    <center> <h2> Register </h2> </center>
+    <form method="GET" action="register">
+        <div class="container" style="width: 600px">
+            <div class="form-group" style="margin-top:20px">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary" style="width:100%" name="register">Register if you don't have an account</button>
+            </div>
+        </div>
+    </form>
+
+    <form method="GET" action="register">
+        <div class="container">
+            {% for msg in messages %}
+                {{ msg}}
+            {% endfor %}
+        </div>
+    </form>
+
+</body>
+</html>

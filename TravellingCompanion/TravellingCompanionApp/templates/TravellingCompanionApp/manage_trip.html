@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage trip</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <center> <h2 style="margin-top: 20px"> Modify Trip Form </h2> </center>
+    <form method="POST" action="/modify_trip">
+        <div class="container" style="width: 600px; margin-top: 50px">
+            <div class="form-group">
+                <label class="form-label">Trip id : {{trip.id}}</label>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Associates : </label>
+                <input class="form-control" type="text" value={{trip.associates}} name="associates" required maxlength="100">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="trip_date">Trip date:</label>
+                <input class="form-control" type="date" id="trip_date" name="trip_date" value={{trip.trip_date|date:"Y-m-d"}} required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Total cost : </label>
+                <input class="form-control" type="number" value={{trip.total_cost}} name="total_cost" required min="1" max="1000000">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Cities to visit during trip : </label><br>
+
+                {% for item in cities_data %}
+                    <input class="cities" type="checkbox" id='checked' name={{item.city_id}} value={{item.city_id}}
+                           {% if item.selected %}checked {%endif %}>
+                    <label> {{item.city_name}}</label><br>
+                {% endfor %}
+            </div>
+            {% csrf_token %}
+
+            <button type="submit" class="btn btn-primary" name="modify_trip" style="width: 100%">Modify trip</button>
+        </div>
+    </form>
+</body>
+</html>
